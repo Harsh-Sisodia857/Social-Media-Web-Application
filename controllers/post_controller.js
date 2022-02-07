@@ -7,5 +7,7 @@ module.exports.comment = function(req,res){
 }
 
 module.exports.post = function(req,res){
-    res.end('<h1>posts</h1>')
+    res.render('post',{
+        title : "post"
+    })
 }
