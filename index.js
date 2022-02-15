@@ -2,9 +2,13 @@ const express = require("express");
 const app = express();
 const port = 8000;
 
+const cookireParser = require('cookie-parser')
+app.use(cookireParser())
 // using layouts
 const expressLayout = require('express-ejs-layouts')
+app.use(express.urlencoded())
 
+const db = require('./config/mongoose')
 app.use(expressLayout);
 
 // static files
@@ -16,7 +20,6 @@ app.use('/',require('./routes/index'))
 // extract style and scripts from sub pages into the layout
 app.set('layout extractStyles',true)
 app.set('layout extractScripts',true)
-
 
 // setting view engine 
 app.set('view engine','ejs')
