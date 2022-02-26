@@ -13,7 +13,8 @@ const db = require('./config/mongoose')
 // used for session cookie
 const session = require('express-session')
 const passport = require('passport')
-const passportLocal = require('./config/passport-local-strategy')
+const passportLocal = require('./config/passport-local-strategy');
+// const MongoStore = require('connect-mongo');
 app.use(expressLayout);
 
 // static files
@@ -28,6 +29,7 @@ app.set('layout extractScripts',true)
 app.set('view engine','ejs')
 app.set('views','./views')
 
+
 app.use(session({
     // properties need to be set  for cookie
     // name of cookie
@@ -41,8 +43,15 @@ app.use(session({
     // session expire time
     cookie : {
         maxAge : (1000 * 60 * 100)
-    }
-    
+     }
+    // store : MongoStore.create({
+    //     mongooseConnection : db,
+    //     autoRemove : 'disabled'
+    // },
+    // function(err){
+    //     console.log(err || 'connect-mongodb setup OK');
+    // }
+    // )  
     }))
 // initializing passport
 app.use(passport.initialize());

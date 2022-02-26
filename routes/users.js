@@ -8,7 +8,7 @@ router.get('/',usersController.user);
 router.get('/profile',passport.checkAuthentication,usersController.profile);
 router.get('/sign-up',usersController.signUp);
 router.get('/sign-in',usersController.signIn);
-
+router.get('/sign-out',usersController.destroySession)
 // Creating New User (Sign Up)
 router.post('/create',usersController.create)
 //user passport as a middleware to authenticate
